@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#173b35">
+    <title>Controle de Tempo dos Tambores</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main class="container">
+        <header class="topo">
+            <div>
+                <p class="sobretitulo">CONTROLE DE PRODUÇÃO</p>
+                <h1>Controle de tempo dos tambores</h1>
+                <p class="subtitulo">
+                    Acompanhe as médias por categoria e confira se os tempos
+                    estão dentro do padrão.
+                </p>
+            </div>
+
+            <div class="data-box">
+                <label for="dataAcompanhamento">Data do acompanhamento</label>
+                <input id="dataAcompanhamento" type="date">
+            </div>
+        </header>
+
+        <section class="legenda" aria-label="Legenda dos resultados">
+            <span><i class="bolinha verde"></i> Dentro do padrão</span>
+            <span><i class="bolinha vermelha"></i> Fora do padrão</span>
+        </section>
+
+        <section class="resumo" aria-live="polite">
+            <div class="resumo-item">
+                <span class="resumo-label">Categorias dentro do padrão</span>
+                <strong id="categoriasDentro">0 de 7</strong>
+            </div>
+
+            <div class="resumo-item destaque">
+                <span class="resumo-label">Porcentagem final</span>
+                <strong id="porcentagemFinal" class="porcentagem-neutra">0,0%</strong>
+            </div>
+
+            <div class="resumo-item">
+                <span class="resumo-label">Categorias preenchidas</span>
+                <strong id="categoriasPreenchidas">0 de 7</strong>
+            </div>
+        </section>
+
+        <section class="tabela-area">
+            <div class="tabela-cabecalho">
+                <h2>Registro por categoria</h2>
+                <p>
+                    Informe o tempo total em minutos e a quantidade de fichas
+                    analisadas em cada categoria.
+                </p>
+            </div>
+
+            <div class="tabela-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Categoria</th>
+                            <th scope="col">Tempo padrão</th>
+                            <th scope="col">Tempo total (min)</th>
+                            <th scope="col">Nº de fichas</th>
+                            <th scope="col">Média por ficha</th>
+                            <th scope="col">Resultado</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="linhasCategorias"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="acoes">
+            <button id="limpar" class="botao botao-secundario" type="button">
+                Limpar dados
+            </button>
+
+            <button id="imprimir" class="botao botao-principal" type="button">
+                Imprimir / Salvar PDF
+            </button>
+        </section>
+
+        <p class="nota-final">
+            A porcentagem considera as 7 categorias. Cada categoria representa
+            1/7 do total. O resultado final é exibido com uma casa decimal,
+            sem arredondar. Os tempos totais devem ser informados em minutos.
+        </p>
+
+        <p id="mensagem" class="mensagem" role="status" aria-live="polite"></p>
+    </main>
+</body>
+</html>
